@@ -17,14 +17,15 @@ def _print_and_flush(msg):
 if __name__ == '__main__':
     params =parse_arguments()
     # Parse arguments
-    params['model_checkpoint_path'] = 'logs/crnn_08-07_14h15m/best_ep134.bin'
+    params['model_checkpoint_path'] = 'logs/crnn_source.bin'
 
     trainer = CRNNTrainer(params)
     if torch.cuda.is_available():
         trainer.cuda()
 
-    target_dataset_test = RealData(data_dir='/apollo/bzh/SSL/Neural-SRP/neural_srp-main/neural_srp-main-pre/datasets/RealMAN/', target_dir=[
-        '/apollo/bzh/SSL/Neural-SRP/neural_srp-main/neural_srp-main-pre/datasets/RealMAN/test/test_moving_source_location.csv'], environment='OfficeRoom3')
+    target_dataset_test = RealData(data_dir='datasets/RealMAN/', 
+                                   target_dir=['datasets/RealMAN/test/test_moving_source_location.csv'], 
+                                   environment='OfficeRoom3')
 
     model_metrics = trainer.test_epoch(target_dataset_test, params['batch_size'])
 
