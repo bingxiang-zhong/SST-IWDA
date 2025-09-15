@@ -23,21 +23,30 @@ Configurable hyperparameters via params_config.py
 ├── datasets/              # Dataset loaders (LibriSpeech, RealMAN, Noise, etc.)
 ├── trainers/              # CRNN trainer classes (baseline + domain adaptation)
 ├── models/                # CRNN model and domain discriminator Pytorch implementations
+├── logs/                  # Model bin files after training
 └── utils/                 # Utility functions (seeding, parameters, etc.)
+
 ```
 
 ## 🚀 Getting Started
 ### 1. Requirements
 
-Python 3.8+
-PyTorch ≥ 1.10
-gpuRIR
-webrtcvad
-Numpy, matplotlib, scipy, soundfile, pandas and tqdm
+Python 3.8+ 
+
+PyTorch ≥ 1.10 
+
+[gpuRIR](https://github.com/DavidDiazGuerra/gpuRIR)
+
+[webrtcvad](https://github.com/wiseman/py-webrtcvad) 
+
+Numpy, matplotlib, scipy, soundfile, pandas and tqdm 
+
 
 ### 2. Dataset Setup
 
 Target domain: [RealMAN dataset](https://github.com/Audio-WestlakeU/RealMAN)
+
+The target domain data is separated into different scenes and it is organized as the follows (a bit different from the original data files in the link):
 
 Dataset structure
 ```bash 
@@ -54,19 +63,45 @@ RealMAN_dataset
     ├── OfficeRoom3
     ├── ...
   ├── train_moving_source_location.csv
-├── test
+├── test 
 ├── val
 ```
 
-Source domain: [LibriSpeech](https://www.openslr.org/12) (e.g., train-clean-100, test-clean)
+Source domain: [LibriSpeech](https://www.openslr.org/12) (train-clean-100, test-clean)
 
-Noise data: [NoiseX-92](https://github.com/speechdnn/Noises) or other noise dataset
+Noise data: [NoiseX-92](https://github.com/speechdnn/Noises) 
 
-Update dataset paths in params_config.py:
 
-**
+Before training, update dataset paths in params_config.py:
+
+```bash 
 --source_path_train   # LibriSpeech training data
 --source_path_test    # LibriSpeech test data
 --real_data_dir       # RealMAN root directory
---target_path_*       # CSV files for train/val/test metadata
-**
+--target_path_train/va/test       # CSV files for train/val/test metadata
+```
+
+## 🏋️ Training
+****1. Train CRNN on Synthetic Data****
+
+First train the model on source domain (synthetic data): 
+```bash 
+python run_crnn.py
+```
+To change the parameters, you can simply modify the parameters in params_config.py or call the following:
+```bash 
+python run_crnn_DA.py \
+    --batch_size 16 \
+    --lr 1e-4 \
+```
+
+****2. Domain Adaptation Training****
+
+Then carry out the domain adversarial training using the following script, but need to specify the model checkpoint path, which is the checkpoint of the model trained with the source domain data.
+
+```bash 
+python run_crnn_DA.py --model_checkpoint_path logs/crnn_source.bin
+```
+
+
+
