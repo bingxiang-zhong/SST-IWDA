@@ -103,5 +103,15 @@ Then carry out the domain adversarial training using the following script, but n
 python run_crnn_DA.py --model_checkpoint_path logs/crnn_source.bin
 ```
 
-
-
+## Citation
+If you use this code, please cite the following paper: 
+```bibtex
+@article{bingxiang2025importance,
+  title={Importance-Weighted Domain Adaptation for Sound Source Tracking},
+  author={Bingxiang Zhong and Thomas Dietzen},
+  journal={Proceedings of DCASE 2025},
+  address={Barcelona, Spain}
+  year={2025},
+  month = oct
+}
+```
