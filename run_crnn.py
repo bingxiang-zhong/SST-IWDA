@@ -46,7 +46,7 @@ def main(params):
     nb_epoch = params["nb_epochs"]
     nb_epoch_snr_decrease = params["nb_epoch_snr_decrease"]
 
-    model_name = params["model"]  # Only for the output filenames, change it also in Network declaration cell
+    model_name = params["model_name"]  # Only for the output filenames, change it also in Network declaration cell
 
 
     # %% Load network
