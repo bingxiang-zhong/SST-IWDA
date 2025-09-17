@@ -79,11 +79,7 @@ def main(params):
         array_pos=Parameter([0.1, 0.1, 0.3], [0.9, 0.2, 0.5]),
         # Ensure a minimum separation between the array and the walls
         SNR=Parameter(15),  # Start the simulation with a low level of omnidirectional noise
-        nb_points=78,  # Simulate 156 RIRs per trajectory (independent from the SRP-PHAT window length
-        cache=False,
-        win_size=1600,
-        hop_rate=1,
-        domain_label=0
+        nb_points=78,  # Simulate 78 RIRs per trajectory (independent from the SRP-PHAT window length
     )
     dataset_test = RandomTrajectoryDataset(  # The same setup than for training but with other source signals
         sourceDataset=source_signal_dataset_test,
@@ -95,10 +91,6 @@ def main(params):
         array_pos=Parameter([0.1, 0.1, 0.3], [0.9, 0.2, 0.5]),
         SNR=Parameter(-10, 15),
         nb_points=78,
-        win_size=1600,
-        hop_rate=1,
-        domain_label=0,
-        cache=False
     )
     # %% Network training
 
