@@ -18,28 +18,28 @@ def parse_arguments():
                         help='Hop rate (default: 0.625)')
 
     # Path parameters
-    parser.add_argument('--source_path_train', type=str, default='/apollo/bzh/SSL/Neural-SRP/neural_srp-main/neural_srp-main-pre/datasets/LibriSpeech/train-clean-100',
+    parser.add_argument('--source_path_train', type=str, default='datasets/LibriSpeech/train-clean-100',
                         help='Training data path ')
-    parser.add_argument('--source_path_test', type=str, default='/apollo/bzh/SSL/Neural-SRP/neural_srp-main/neural_srp-main-pre/datasets/LibriSpeech/test-clean',
+    parser.add_argument('--source_path_test', type=str, default='datasets/LibriSpeech/test-clean',
                         help='Test data path ')
 
-    parser.add_argument('--real_data_dir', type=str, default='/apollo/bzh/SSL/Neural-SRP/neural_srp-main/neural_srp-main-pre/datasets/RealMAN/',
+    parser.add_argument('--real_data_dir', type=str, default='datasets/RealMAN/',
                         help='Real recorded data path ')
 
     parser.add_argument('--target_path_train', type=str,
-                        default='/apollo/bzh/SSL/Neural-SRP/neural_srp-main/neural_srp-main-pre/datasets/RealMAN/train/train_moving_source_location.csv',
+                        default='datasets/RealMAN/train/train_moving_source_location.csv',
                         help='Real recorded training data path ')
 
     parser.add_argument('--target_path_test', type=str,
-                        default='/apollo/bzh/SSL/Neural-SRP/neural_srp-main/neural_srp-main-pre/datasets/RealMAN/test/test_moving_source_location.csv',
+                        default='datasets/RealMAN/test/test_moving_source_location.csv',
                         help='Real recorded testing data path ')
 
     parser.add_argument('--target_path_val', type=str,
-                        default='/apollo/bzh/SSL/Neural-SRP/neural_srp-main/neural_srp-main-pre/datasets/RealMAN/val/val_moving_source_location.csv',
+                        default='datasets/RealMAN/val/val_moving_source_location.csv',
                         help='Real recorded validation data path ')
 
     parser.add_argument('--target_path_noise', type=str,
-                        default='/apollo/bzh/SSL/Neural-SRP/neural_srp-main/neural_srp-main-pre/datasets/RealMAN/train/noise',
+                        default='datasets/RealMAN/train/noise',
                         help='Real recorded noise data path ')
 
     parser.add_argument('--model_checkpoint_path', type=str, default='',

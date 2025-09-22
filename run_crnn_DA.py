@@ -121,7 +121,7 @@ def main():
 
     # Initialize trainer
     trainer = CRNNTrainer(params)
-    trainer.load_checkpoint("logs/crnn_08-10_08h23m/best_ep130.bin")
+    trainer.load_checkpoint("logs/crnn_source.bin")
     if torch.cuda.is_available():
         trainer.cuda()
 
